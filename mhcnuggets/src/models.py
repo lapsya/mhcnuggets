@@ -62,7 +62,8 @@ def mhcnuggets_lstm(input_size,
     '''
 
     model = Sequential()
-    model.add(Masking(mask_value=MASK_VALUE, input_shape=(input_size)))
+    model.add(keras.Input(shape=(input_size)))
+    model.add(Masking(mask_value=MASK_VALUE))
     model.add(LSTM(hidden_size, dropout=dropout, recurrent_dropout=dropout))
     model.add(Dense(hidden_size))
     model.add(Dropout(dropout))
